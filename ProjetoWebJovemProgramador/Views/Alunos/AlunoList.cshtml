@@ -1,0 +1,43 @@
+﻿@model List<ProjetoWebJovemProgramador.Models.Aluno>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Aluno aluno in Model)
+            {
+                <tr>
+                    <td>
+                        <span id="nome-@aluno.Id">@aluno.Nome</span>
+                        <form id="form-editar-@aluno.Id" style="display: none;" method="post" action="AtualizarAluno">
+                            <input type="hidden" name="id" value="@aluno.Id" />
+                            <input type="text" name="novoNome" value="@aluno.Nome" />
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-secondary btn-cancelar" data-aluno-id="@aluno.Id">Cancelar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-between">
+                            <form method="post" action="DeletarAluno">
+                                <input type="hidden" name="id" value="@aluno.Id" />
+                                <button type="submit" class="btn btn-danger">Deletar</button>
+                            </form>
+                            <button class="btn btn-primary btn-editar" data-aluno-id="@aluno.Id">Editar</button>
+                            <a class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="BuscarEndereco" asp-route-cep="88355161">Endereco</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum aluno encontrado.</p>
+}

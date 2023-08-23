@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/ProjetoWebJovemProgramador.styles.css" asp-append-version="true" />
     <style>
         body{
-            background-color: gainsboro;
+            background-color: steelblue;
         }
     </style>
 </head>
@@ -29,7 +29,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Alunos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Professor" asp-action="Index">Cadastrar Professores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Alunos" asp-action="AlunoList">Lista de Aluno</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="CadastrarAlunos" asp-action="CadastrarAlunos">Cadastrar Alunos</a>
                         </li>
                     </ul>
                 </div>
@@ -42,11 +48,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - ProjetoWebJovemProgramador - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
