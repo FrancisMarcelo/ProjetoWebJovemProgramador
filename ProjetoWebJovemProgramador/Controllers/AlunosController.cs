@@ -12,6 +12,7 @@ namespace ProjetoWebJovemProgramador.Controllers
 
 
 
+
         public AlunosController(IConfiguration configuration, IAlunoRepositorio alunoRepositorio)
         {
             _configuration = configuration;
@@ -61,21 +62,14 @@ namespace ProjetoWebJovemProgramador.Controllers
 
         }
        
-        public IActionResult AtualizarAluno(int id, string novoNome)
+        public IActionResult AtualizarAluno(Aluno aluno)
         {
+            
             try
             {
-                var aluno = _alunoRepositorio.BuscarAlunoPorId(id);
+                _alunoRepositorio.AtualizarAluno(aluno);
 
-                if (aluno != null)
-                {
-                    aluno.Nome = novoNome;
-                    _alunoRepositorio.AtualizarAluno(aluno);
-                }
-                else
-                {
-                    TempData["MsgErro"] = "Aluno não encontrado!";
-                }
+              
             }
             catch (Exception ex)
             {
@@ -85,7 +79,11 @@ namespace ProjetoWebJovemProgramador.Controllers
             TempData["MsgSucesso"] = "Aluno atualizado com sucesso!";
             return RedirectToAction("AlunoList");
         }
-     
+        public IActionResult Editar(int id)
+        {
+            var idAluno = _alunoRepositorio.BuscarAlunoPorId(id);
+            return View("Editar",idAluno);
+        }
 
 
 

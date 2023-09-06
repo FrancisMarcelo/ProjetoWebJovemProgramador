@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "_LayoutDeslogado";
+}
+
+<style>
+    body {
+        background-image: url('https://jovemnerd.com.br/wp-content/uploads/2017/03/guardioes-galaxia-trailer-4.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #ffffff;
+    }
+
+    .container {
+        margin-left: 30px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 30%;
+        padding: 8px;
+        margin-bottom: 10px; 
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        font-size: 14px;
+    }
+
+    label {
+        text-align: left;
+        display: block;
+    }
+
+    
+    .btn-align-left {
+        text-align: left;
+    }
+</style>
+
+@if (TempData["MsgErro"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["MsgErro"]
+    </div>
+}
+
+@model Login;
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 text-center">
+            <h2 class="mt-4">Bem vindo! Necessário login de acesso.</h2>
+            <form asp-controller="Login" asp-action="BuscaLogin" method="get">
+                <div class="mb-3">
+                    <label for="inputUsuario" class="form-label">Usuário</label>
+                    <input type="text" class="form-control" id="inputUsuario" asp-for="Usuario" />
+                </div>
+                <div class="mb-3">
+                    <label for="inputSenha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="inputSenha" asp-for="Senha" />
+                </div>
+                <div class="btn-align-left">
+                 
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
